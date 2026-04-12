@@ -1,4 +1,4 @@
-"""Day 10: Spending frequency analyzer (façade over :mod:`ledgerlogic.analysis`)."""
+"""Spending frequency analyzer (façade over :mod:`ledgerlogic.analysis`)."""
 
 from __future__ import annotations
 
