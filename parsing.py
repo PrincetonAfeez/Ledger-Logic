@@ -1,4 +1,5 @@
-"""Shared parsing for dates and currency amounts used across CSV loaders."""
+"""Shared parsing for dates and currency amounts used across CSV loaderss
+."""
 
 from __future__ import annotations
 
