@@ -1,0 +1,9 @@
+# LedgerLogic runtime dependencies (mirrors pyproject.toml [project.dependencies]).
+# Python 3.10+
+#
+# Install the package (editable, from repo root):
+#   pip install -e .
+#
+# Dev tools (pytest, ruff, mypy): pip install -e ".[dev]"
+
+typing_extensions>=4.12
