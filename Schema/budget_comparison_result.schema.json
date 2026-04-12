@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/budget_comparison_result.schema.json",
+  "title": "BudgetComparisonResult",
+  "description": "Comparison between actual spend and budgeted amounts.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "budgeted": {
+            "type": "number"
+          },
+          "actual": {
+            "type": "number"
+          },
+          "difference": {
+            "type": "number"
+          },
+          "percentage_of_budget": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/budgetComparisonStatus"
+          },
+          "tier": {
+            "$ref": "common.schema.json#/$defs/budgetComparisonTier"
+          },
+          "priority": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "category",
+          "budgeted",
+          "actual",
+          "difference",
+          "percentage_of_budget",
+          "status",
+          "tier",
+          "priority"
+        ]
+      }
+    },
+    "overages": {
+      "$ref": "common.schema.json#/$defs/stringSet"
+    },
+    "under_budget": {
+      "$ref": "common.schema.json#/$defs/stringSet"
+    },
+    "total_overage": {
+      "type": "number"
+    },
+    "total_surplus": {
+      "type": "number"
+    },
+    "total_actual": {
+      "type": "number"
+    },
+    "total_budgeted": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "rows",
+    "overages",
+    "under_budget",
+    "total_overage",
+    "total_surplus",
+    "total_actual",
+    "total_budgeted"
+  ]
+}

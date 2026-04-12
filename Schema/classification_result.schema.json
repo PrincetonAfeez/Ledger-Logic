@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/classification_result.schema.json",
+  "title": "ClassificationResult",
+  "description": "Output from a transaction classification run.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "categorized_record.schema.json"
+      }
+    },
+    "flagged": {
+      "type": "array",
+      "items": {
+        "$ref": "categorized_record.schema.json"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "category",
+          "total",
+          "count"
+        ]
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "category_rule.schema.json"
+      }
+    }
+  },
+  "required": [
+    "records",
+    "flagged",
+    "warnings",
+    "summary",
+    "rules"
+  ]
+}

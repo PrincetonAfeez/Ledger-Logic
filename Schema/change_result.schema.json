@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/change_result.schema.json",
+  "title": "ChangeResult",
+  "description": "Result of converting a dollar amount into US-style bill and coin denominations.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ok": {
+      "type": "boolean"
+    },
+    "cents": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rounded": {
+      "type": "boolean"
+    },
+    "breakdown": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[0-9]+$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "trace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "denomination": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "before": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "after": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "denomination",
+          "name",
+          "before",
+          "count",
+          "after"
+        ]
+      }
+    },
+    "bill_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "coin_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "verification": {
+      "type": "number",
+      "minimum": 0
+    },
+    "used_denominations": {
+      "$ref": "common.schema.json#/$defs/integerSet"
+    },
+    "unused_denominations": {
+      "$ref": "common.schema.json#/$defs/integerSet"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "ok",
+    "cents",
+    "amount",
+    "rounded",
+    "breakdown",
+    "trace",
+    "bill_count",
+    "coin_count",
+    "verification",
+    "used_denominations",
+    "unused_denominations",
+    "message"
+  ]
+}

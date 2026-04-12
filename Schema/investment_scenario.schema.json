@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/investment_scenario.schema.json",
+  "title": "InvestmentScenario",
+  "description": "Inputs for an investment projection scenario.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "initial_principal": {
+      "type": "number",
+      "minimum": 0
+    },
+    "annual_rate": {
+      "type": "number"
+    },
+    "years": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "compounding": {
+      "$ref": "common.schema.json#/$defs/compounding"
+    },
+    "contribution_amount": {
+      "type": "number",
+      "minimum": 0
+    },
+    "contribution_frequency": {
+      "$ref": "common.schema.json#/$defs/contributionFrequency"
+    },
+    "contribution_timing": {
+      "$ref": "common.schema.json#/$defs/contributionTiming"
+    },
+    "inflation_rate": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "name",
+    "initial_principal",
+    "annual_rate",
+    "years",
+    "compounding",
+    "contribution_amount",
+    "contribution_frequency",
+    "contribution_timing",
+    "inflation_rate"
+  ]
+}

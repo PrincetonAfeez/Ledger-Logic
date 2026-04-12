@@ -1,0 +1,18 @@
+{
+  "project": "LedgerLogic",
+  "folder": "Schema",
+  "generated_at_utc": "2026-04-12T01:02:28Z",
+  "files": [
+    "analysis_report.schema.json",
+    "budget_allocation.schema.json",
+    "budget_comparison_result.schema.json",
+    "categorized_record.schema.json",
+    "category_rule.schema.json",
+    "change_result.schema.json",
+    "classification_result.schema.json",
+    "common.schema.json",
+    "investment_scenario.schema.json",
+    "projection_result.schema.json",
+    "reconciliation_report.schema.json"
+  ]
+}

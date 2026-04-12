@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/common.schema.json",
+  "title": "LedgerLogic Common Types",
+  "description": "Shared reusable definitions for LedgerLogic schema files.",
+  "type": "object",
+  "$defs": {
+    "dateString": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date string in YYYY-MM-DD format."
+    },
+    "budgetTier": {
+      "type": "string",
+      "enum": [
+        "Needs",
+        "Wants",
+        "Savings"
+      ]
+    },
+    "budgetComparisonTier": {
+      "type": "string",
+      "enum": [
+        "Needs",
+        "Wants",
+        "Savings",
+        "Unknown"
+      ]
+    },
+    "budgetComparisonStatus": {
+      "type": "string",
+      "enum": [
+        "OVER",
+        "UNDER",
+        "EVEN"
+      ]
+    },
+    "monthlyTrend": {
+      "type": "string",
+      "enum": [
+        "starting point",
+        "up",
+        "down",
+        "flat"
+      ]
+    },
+    "compounding": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "annual"
+      ]
+    },
+    "contributionFrequency": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "annual"
+      ]
+    },
+    "contributionTiming": {
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ]
+    },
+    "stringSet": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "integerSet": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "uniqueItems": true
+    }
+  }
+}

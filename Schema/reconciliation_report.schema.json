@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/reconciliation_report.schema.json",
+  "title": "ReconciliationReport",
+  "description": "Output from comparing two normalized transaction files.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "matched": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reconciliationPair"
+      }
+    },
+    "amount_mismatch": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reconciliationPair"
+      }
+    },
+    "date_mismatch": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reconciliationPair"
+      }
+    },
+    "suspicious": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reconciliationPair"
+      }
+    },
+    "unmatched_source": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reconciliationRecord"
+      }
+    },
+    "unmatched_reference": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reconciliationRecord"
+      }
+    },
+    "set_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "shared_keys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_only_keys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reference_only_keys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "symmetric_difference": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "shared_keys",
+        "source_only_keys",
+        "reference_only_keys",
+        "symmetric_difference"
+      ]
+    },
+    "source_total": {
+      "type": "number"
+    },
+    "reference_total": {
+      "type": "number"
+    },
+    "net_difference": {
+      "type": "number"
+    },
+    "match_rate": {
+      "type": "number"
+    },
+    "source_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reference_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "matched",
+    "amount_mismatch",
+    "date_mismatch",
+    "suspicious",
+    "unmatched_source",
+    "unmatched_reference",
+    "set_summary",
+    "source_total",
+    "reference_total",
+    "net_difference",
+    "match_rate",
+    "source_count",
+    "reference_count"
+  ],
+  "$defs": {
+    "reconciliationRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "$ref": "common.schema.json#/$defs/dateString"
+        },
+        "merchant": {
+          "type": "string"
+        },
+        "merchant_key": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "amount_cents": {
+          "type": "integer"
+        },
+        "source_label": {
+          "type": "string"
+        },
+        "line_number": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "date",
+        "merchant",
+        "merchant_key",
+        "amount",
+        "amount_cents",
+        "source_label",
+        "line_number"
+      ]
+    },
+    "reconciliationPair": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/reconciliationRecord"
+        },
+        "reference": {
+          "$ref": "#/$defs/reconciliationRecord"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reason": {
+          "type": "string"
+        },
+        "amount_delta": {
+          "type": "number"
+        },
+        "date_gap": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "source",
+        "reference",
+        "confidence",
+        "reason",
+        "amount_delta",
+        "date_gap"
+      ]
+    }
+  }
+}

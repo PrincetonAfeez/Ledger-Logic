@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/budget_allocation.schema.json",
+  "title": "BudgetAllocation",
+  "description": "Budget strategy output with per-category allocations and profile details.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "strategy": {
+      "type": "string"
+    },
+    "allocations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "tier": {
+            "$ref": "common.schema.json#/$defs/budgetTier"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "priority": {
+            "type": "integer"
+          },
+          "actual_spend": {
+            "type": "number"
+          },
+          "budgeted_amount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "tier",
+          "weight",
+          "priority",
+          "actual_spend",
+          "budgeted_amount"
+        ]
+      }
+    },
+    "allocated_total": {
+      "type": "number"
+    },
+    "remaining": {
+      "type": "number"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "strategy",
+    "allocations",
+    "categories",
+    "allocated_total",
+    "remaining",
+    "warnings"
+  ]
+}

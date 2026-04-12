@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/category_rule.schema.json",
+  "title": "CategoryRule",
+  "description": "Merchant rule target for the LedgerLogic categorizer.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "category": {
+      "type": "string"
+    },
+    "subcategory": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "category",
+    "subcategory"
+  ],
+  "examples": [
+    {
+      "category": "Food",
+      "subcategory": "Groceries"
+    }
+  ]
+}

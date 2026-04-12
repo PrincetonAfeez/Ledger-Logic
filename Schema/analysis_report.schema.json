@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/analysis_report.schema.json",
+  "title": "AnalysisReport",
+  "description": "Aggregated spending analysis output used by LedgerLogic reports.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "top_by_frequency": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "merchant": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "merchant",
+          "count"
+        ]
+      }
+    },
+    "top_by_spend": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "merchant": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "merchant",
+          "total"
+        ]
+      }
+    },
+    "day_of_week": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "day": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "average": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "day",
+          "total",
+          "count",
+          "average"
+        ]
+      }
+    },
+    "weekend_vs_weekday": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "weekend_total": {
+          "type": "number"
+        },
+        "weekday_total": {
+          "type": "number"
+        },
+        "weekend_avg": {
+          "type": "number"
+        },
+        "weekday_avg": {
+          "type": "number"
+        },
+        "percentage_difference": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "weekend_total",
+        "weekday_total",
+        "weekend_avg",
+        "weekday_avg",
+        "percentage_difference"
+      ]
+    },
+    "time_of_month": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pre_payday_total": {
+          "type": "number"
+        },
+        "pre_payday_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "post_payday_total": {
+          "type": "number"
+        },
+        "post_payday_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "pre_payday_total",
+        "pre_payday_count",
+        "post_payday_total",
+        "post_payday_count"
+      ]
+    },
+    "monthly_trends": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "month": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "trend": {
+            "$ref": "common.schema.json#/$defs/monthlyTrend"
+          }
+        },
+        "required": [
+          "month",
+          "total",
+          "trend"
+        ]
+      }
+    },
+    "anomaly_report": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "anomalies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "date": {
+                "$ref": "common.schema.json#/$defs/dateString"
+              },
+              "merchant": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              },
+              "category": {
+                "type": "string"
+              },
+              "category_average": {
+                "type": "number"
+              },
+              "multiple": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "date",
+              "merchant",
+              "amount",
+              "category",
+              "category_average",
+              "multiple"
+            ]
+          }
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "affected_categories": {
+          "$ref": "common.schema.json#/$defs/stringSet"
+        }
+      },
+      "required": [
+        "anomalies",
+        "counts",
+        "affected_categories"
+      ]
+    }
+  },
+  "required": [
+    "record_count",
+    "top_by_frequency",
+    "top_by_spend",
+    "day_of_week",
+    "weekend_vs_weekday",
+    "time_of_month",
+    "monthly_trends",
+    "anomaly_report"
+  ]
+}

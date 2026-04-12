@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/categorized_record.schema.json",
+  "title": "CategorizedRecord",
+  "description": "Normalized transaction row after import/classification or when loaded for analysis.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "date": {
+      "$ref": "common.schema.json#/$defs/dateString"
+    },
+    "merchant": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string"
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "match_type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "merchant",
+    "amount",
+    "category"
+  ],
+  "examples": [
+    {
+      "date": "2026-04-01",
+      "merchant": "Whole Foods",
+      "amount": 82.14,
+      "category": "Food",
+      "subcategory": "Groceries",
+      "confidence": 0.98,
+      "match_type": "rule"
+    }
+  ]
+}

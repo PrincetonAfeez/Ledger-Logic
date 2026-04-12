@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Schema/projection_result.schema.json",
+  "title": "ProjectionResult",
+  "description": "Year-by-year investment projection output.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "scenario": {
+      "$ref": "investment_scenario.schema.json"
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "year": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "starting_balance": {
+            "type": "number"
+          },
+          "contributions": {
+            "type": "number"
+          },
+          "interest_earned": {
+            "type": "number"
+          },
+          "ending_balance": {
+            "type": "number"
+          },
+          "real_balance": {
+            "type": "number"
+          },
+          "principal_portion": {
+            "type": "number"
+          },
+          "interest_portion": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "year",
+          "starting_balance",
+          "contributions",
+          "interest_earned",
+          "ending_balance",
+          "real_balance",
+          "principal_portion",
+          "interest_portion"
+        ]
+      }
+    },
+    "ending_balance": {
+      "type": "number"
+    },
+    "total_contributed": {
+      "type": "number"
+    },
+    "total_earned": {
+      "type": "number"
+    },
+    "real_ending_balance": {
+      "type": "number"
+    },
+    "purchasing_power_loss": {
+      "type": "number"
+    },
+    "warning": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "scenario",
+    "rows",
+    "ending_balance",
+    "total_contributed",
+    "total_earned",
+    "real_ending_balance",
+    "purchasing_power_loss",
+    "warning"
+  ]
+}
