@@ -12,10 +12,12 @@ Development (tests):
 
 ```bash
 pip install -e ".[dev]"
-ruff check ledgerlogic tests
-mypy ledgerlogic
+ruff check . tests
+mypy
 pytest
 ```
+
+Because the package is flat at the repo root, **mypy** is configured with an explicit **`files`** list in `pyproject.toml` (excluding `__main__.py` to avoid a duplicate-module quirk). Add new library modules there when you add `.py` files.
 
 GitHub Actions (`.github/workflows/ci.yml`) runs **ruff**, **mypy**, and **pytest** on Python 3.10 and 3.12 when you push to GitHub.
 
@@ -34,7 +36,7 @@ The argparse implementation and dashboard live in **`ledgerlogic.cli`**; `python
 
 ## Package layout
 
-Importable submodules include **`analysis`** (CSV load, metrics, menus), **`analyzer`** (stable façade over `analysis`), **`budget`**, **`categorizer`**, **`change_maker`**, **`investment`**, **`parsing`**, **`reconciler`**, **`report_builder`**, **`schemas`**, **`storage`**, **`textutil`**, and **`cli`**. See `ledgerlogic.__all__` for the canonical list.
+The installable package name is **`ledgerlogic`**, but sources live at the **repository root** (and `analysis/`), not under a nested `ledgerlogic/` directory—see **`[tool.setuptools.package-dir]`** in `pyproject.toml`. Import paths are unchanged (e.g. `ledgerlogic.cli`, `ledgerlogic.analysis.metrics`). Submodules include **`analysis`**, **`analyzer`**, **`budget`**, **`categorizer`**, **`change_maker`**, **`investment`**, **`parsing`**, **`reconciler`**, **`report_builder`**, **`schemas`**, **`storage`**, **`textutil`**, and **`cli`**. See `ledgerlogic.__all__` for the canonical list.
 
 ## CSV data paths
 
