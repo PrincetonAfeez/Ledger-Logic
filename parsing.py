@@ -1,4 +1,7 @@
 """Shared parsing for dates and currency amounts used across CSV loaders."""
+# PINNED SNAPSHOT — sourced from https://github.com/PrincetonAfeez/ledger-logic
+# This is the original copy of parsing.py pinned at the version that passed
+# the Ledger Logic evaluation. Any updates must be replicated to all repositories within Ledger Logic.
 
 from __future__ import annotations
 
