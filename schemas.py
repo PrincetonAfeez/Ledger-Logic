@@ -3,6 +3,11 @@
 These are documentation and static-check contracts; runtime still uses plain dicts.
 """
 
+# PINNED SNAPSHOT — sourced from https://github.com/PrincetonAfeez/ledger-logic
+# This is the original copy of schemas.py pinned at the version that passed
+# the Ledger Logic evaluation. Any updates must be replicated to all repositories within Ledger Logic.
+
+
 from __future__ import annotations
 
 from datetime import date
