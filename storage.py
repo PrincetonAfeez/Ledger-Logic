@@ -8,6 +8,9 @@ JSON, CSV, and text reports are written via a temporary file in the same
 directory and :func:`os.replace` so a crash mid-write is less likely to leave a
 truncated destination file.
 """
+# PINNED SNAPSHOT — sourced from https://github.com/PrincetonAfeez/ledger-logic
+# This is the original copy of storage.py pinned at the version that passed
+# the Ledger Logic evaluation. Any updates must be replicated to all repositories within Ledger Logic.
 
 from __future__ import annotations
 
